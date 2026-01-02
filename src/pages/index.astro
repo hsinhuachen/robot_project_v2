@@ -1,28 +1,7 @@
 ---
 import Auth from '@layouts/Auth.astro';
+import LoginPage from '@components/auth/login.tsx'
 ---
 <Auth>
-	<form novalidate="novalidate" method="post">
-		<div class="auth-header">
-			<h1>登入</h1>
-		</div> <!-- /auth-header -->
-		<div class="auth-body">
-			<div class="form-group">
-				<label for="username" class="form-label">使用者名稱</label>
-				<div class="form-control-group">
-					<input id="username" class="form-control" type="text" placeholder="">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="userpw" class="form-label">密碼</label>
-				<div class="form-control-group">
-					<input id="userpw" class="form-control" type="password" placeholder="">
-				</div>
-				<a href="/forget-password" class="auth-link">忘記密碼</a>
-			</div>
-			<div class="form-group">
-				<button type="submit" class="btn btn-primary">登入</button>
-			</div>
-		</div> <!-- /auth-body -->
-	</form>
+	<LoginPage client:load  />
 </Auth>

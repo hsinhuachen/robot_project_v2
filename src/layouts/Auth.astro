@@ -3,6 +3,7 @@ import { SITE } from "src/config";
 import "../stylesheet/style.scss";
 import SetMeta from "@partials/SetMeta.astro";
 
+import Logo from "@assets/images/intellligent_logo.png"
 import Bg from "@assets/images/bg.jpg"
 
 const { title, pageDesc, keyword, ogImage, pageType, classname, activeNav, current } = Astro.props;
@@ -33,6 +34,9 @@ export interface Props {
 					<slot />
 				</div> <!-- /auth-inner -->
 				<div class="auth-footer">
+					<div class="logo">
+						<img src={Logo.src} alt="" title="intellligent logo" />
+					</div>
 					<p class="">宇誠智能股份有限公司製 版本 <span class="verison">000.000.000</span></p>
 				</div> <!-- /auth-footer -->
 			</div> <!-- /auth-box -->
