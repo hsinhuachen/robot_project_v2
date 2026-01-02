@@ -1,0 +1,14 @@
+@charset "utf-8";
+@import "./custom-variables";
+@import "bootstrap/scss/bootstrap";
+
+// Import the Sass files as usual
+$bootstrap-icons-font-dir: "bootstrap-icons/font/fonts";
+@import "bootstrap-icons/font/bootstrap-icons";
+
+@import "./custom.scss";
+
+//components
+@import './component/header.scss';
+@import './component/footer.scss';
+@import './component/auth.scss';

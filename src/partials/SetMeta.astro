@@ -1,0 +1,60 @@
+---
+import { SITE } from "src/config";
+export interface Props {
+  title?: string;
+  pageDesc?: string;
+  author?: string;
+  pageType?: string;
+  description?: string;
+  keyword?: string;
+  ogImage?: string;
+}
+const {
+  title,
+  author = SITE.author,
+  description = SITE.desc,
+  keyword,
+  pageDesc,
+  pageType,
+  ogImage = SITE.ogImage,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.url);
+
+const socialImageURL = new URL(
+  ogImage ? ogImage : SITE.ogImage,
+  Astro.url.origin
+).href;
+
+const setTitle = SITE.title
+const fallbackImageURL = new URL(SITE.ogImage, Astro.url.origin).href;
+const siteTitle = title? `${title} - ${setTitle}}` : setTitle;
+const siteDesc = pageDesc? pageDesc :  description;
+const siteKeyword = keyword? keyword : keyword;
+---
+<title>{siteTitle}</title>
+<meta name="title" content={siteTitle} />
+<meta name="description" content={siteDesc} />
+<meta name="keywords" content={siteKeyword} />
+<meta name="author" content={author} />
+
+<meta property="og:title" content={siteTitle} />
+<meta property="og:type" content={ pageType? pageType : 'website' }>
+<meta property="og:description" content={siteDesc} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:image:alt" content={title}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={siteTitle} />
+<meta property="twitter:description" content={siteDesc} />
+<meta
+    property="twitter:image"
+    content={socialImageURL.endsWith(".svg")
+    ? fallbackImageURL
+    : socialImageURL}
+/>
+<link rel="shortcut icon" type="image/x-icon" href={`/favicon.ico`} />

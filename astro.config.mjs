@@ -6,8 +6,8 @@ import react from "@astrojs/react";
 export default defineConfig({
     base: '/',
     //只要這行就可以把 root path 設定在
-    outDir: '../public/',
-    site: 'https://eray.4pt.tw/',
+    outDir: './dist',
+    site: 'https://hsinhuachen.github.co',
     build: {
         format: 'file'
     },

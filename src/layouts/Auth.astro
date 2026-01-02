@@ -2,8 +2,8 @@
 import { SITE } from "src/config";
 import "../stylesheet/style.scss";
 import SetMeta from "@partials/SetMeta.astro";
-import Header from "@partials/Header.astro";
-import Footer from "@partials/Footer.astro";
+
+import Bg from "@assets/images/bg.jpg"
 
 const { title, pageDesc, keyword, ogImage, pageType, classname, activeNav, current } = Astro.props;
 export interface Props {
@@ -26,14 +26,17 @@ export interface Props {
 		<meta name="generator" content={Astro.generator} />
 		<SetMeta title={ title } pageDesc={ pageDesc } pageType={ pageType } keyword={ keyword } ogImage={ ogImage }  />
 	</head>
-	<body class={ `${classname ? classname : ""}` }>
-		<div id="container">
-			<Header activeNav={ activeNav } current={ current } />
-			<main id="main" class="">
-				<slot />
-			</main> <!-- /main -->
-			<Footer />
-		</div> <!-- /cotainer -->
+	<body>
+		<div class="auth-wrapper" style={ `background-image: url(${Bg.src})` }>
+			<div class="auth-box">
+				<div class="auth-inner">
+					<slot />
+				</div> <!-- /auth-inner -->
+				<div class="auth-footer">
+					<p class="">宇誠智能股份有限公司製 版本 <span class="verison">000.000.000</span></p>
+				</div> <!-- /auth-footer -->
+			</div> <!-- /auth-box -->
+		</div> <!-- /auth-wrapper -->
 	</body>
 </html>
 <script>

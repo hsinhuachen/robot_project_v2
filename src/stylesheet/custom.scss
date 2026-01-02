@@ -1,0 +1,93 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+ul,
+ol,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-dark: #0d3a7a;
+    --primary-light: #f0f3f9;
+    --gray: #6c757d;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+a {
+    color: $black;
+
+    &:focus,
+    &:hover {
+        color: $black;
+        text-decoration: none;
+    }
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+}
+
+body {
+    color: $black;
+    font-size: 1.6rem;
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    background: $bg-color;
+    height: 100%;
+    margin: 0;
+
+    &.hidebar {
+        overflow: hidden;
+    }
+}
+
+.font-noto {
+    font-family: "Noto Sans TC", sans-serif;
+}
+
+p {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 160%;
+}
+
+#container {
+    position: relative;
+    z-index: 2;
+    min-height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#main {
+    overflow: unset;
+    flex-grow: 1;
+}
