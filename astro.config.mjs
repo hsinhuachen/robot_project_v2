@@ -7,9 +7,9 @@ export default defineConfig({
     base: '/',
     //只要這行就可以把 root path 設定在
     outDir: './dist',
-    site: 'https://hsinhuachen.github.co',
-    build: {
-        format: 'file'
-    },
+    site: 'https://hsinhuachen.github.io',
+    // build: {
+    //     format: 'file'
+    // },
     integrations: [sitemap(), react()]
 });
