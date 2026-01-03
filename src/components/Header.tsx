@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DefaultAvater from "@assets/images/person-circle.svg";
 import Account from "@assets/images/account.png";
 
-function Header() {
+function Header({ onOpenAccount }) {
   return (
     <header>
         <nav className="navbar">
@@ -29,15 +29,25 @@ function Header() {
                 </ul>
             </div>
             <div className="nav-right">
-                <User />
+                <User onOpenAccount={onOpenAccount} />
             </div>
         </nav>
     </header>
   );
 }
 
-function User() {
+function User({ onOpenAccount }) {
     const [open, setOpen] = useState(false);
+
+    // 登出
+    const handleLogout = () => {
+        // 1️⃣ 清掉登入資訊
+        // localStorage.removeItem("token");
+        // localStorage.removeItem("user");
+    
+        window.location.href = "/";
+      };
+    
     return (
         <div className="dropdown">
             <button
@@ -59,7 +69,13 @@ function User() {
                         <span>Yoi</span>
                     </div>
                     <hr />
-                    <button className="account-item">
+                    <button 
+                      className="account-item"
+                      onClick={() => {
+                        onOpenAccount();
+                        setOpen(false);
+                      }}
+                    >
                         <div className="avatar">
                             <img src={Account.src} alt='' />
                         </div>
@@ -67,7 +83,8 @@ function User() {
                     </button>
                 </div>
                 <button 
-                    className="logout-btn" 
+                  className="logout-btn" 
+                  onClick={handleLogout}
                 >
                     <div className="icon">
                         <i className="bi bi-box-arrow-in-right"></i>

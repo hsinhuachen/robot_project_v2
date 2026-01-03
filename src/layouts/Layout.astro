@@ -25,9 +25,7 @@ export interface Props {
 		<SetMeta title={ title } pageDesc={ pageDesc } pageType={ pageType } keyword={ keyword } ogImage={ ogImage }  />
 	</head>
 	<body class="panel-wrapper">
-		<div id="container">
-			<slot />
-		</div> <!-- /cotainer -->
+		<slot />
 	</body>
 </html>
 <script>

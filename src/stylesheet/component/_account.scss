@@ -1,0 +1,62 @@
+.account-modal{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9990;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.account-panel{
+    color: #FFFFFF;
+    width: 90%;
+    max-width: 850px;
+    height: 80vh;
+    overflow: auto;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: $black;
+}
+
+.modal-body{
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+}
+
+.modal-content{
+    margin-top: 25px;
+    flex: 1;
+}
+
+.modal-footer{
+    justify-content: center;
+    button{
+        width: 80px;
+        border-radius: 0;
+    }
+}
+
+.account-btn{
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    width: 100%;
+    border: none;
+    background: transparent;
+    transition: all .3s ease;
+    &:hover{
+        color: $primary;
+    }
+}
+
+.account-select{
+    color: #FFFFFF;
+    background: transparent;
+    border: none;
+}
