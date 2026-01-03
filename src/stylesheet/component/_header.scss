@@ -1,0 +1,133 @@
+.navbar{
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    line-height: 160%;
+    font-weight: 900;
+    padding: 10px 15px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.setting-btn, .user-btn{
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 160%;
+    border: none;
+    background: transparent;
+}
+
+.user-btn{
+    gap: 10px;
+    align-items: center;
+    display: flex;
+}
+
+.avatar{
+    width: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    img{
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+}
+
+.nav-info{
+    flex: 1;
+    padding: 0 40px;
+    ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        gap: 30px;
+        justify-content: center;
+        display: flex;
+    }
+}
+
+.dropdown-menu{
+    width: 200px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 13px 10px;
+    margin-top: 10px;
+    transform: translateX(-10%);
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+
+.user-control{
+    color: #FFFFFF;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: $black;
+    box-shadow: 0 0 4px 0px rgba(0,0,0,.25);
+    hr{
+        height: 1px;
+        opacity: 1;
+        margin: 5px 0;
+        padding: 0;
+        background-color: #FFFFFF;
+    }
+}
+
+.account-item{
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 900;
+    padding: 5px 5px;
+    background: transparent;
+    border: none;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    transition: all .3s ease;
+    .avater{
+        width: 30px;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+    span{
+        padding-left: 10px;
+        flex: 1;
+        display: block;
+    }
+    &:hover{
+        color: #FFFFFF;
+        background: transparent;
+    }
+}
+
+.logout-btn{
+    width: 100%;
+    color: $black;
+    font-weight: 900;
+    line-height: 100%;
+    border: none;
+    background: transparent;
+    align-items: center;
+    display: flex;
+    .icon{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid $black;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        i{
+            font-size: 1.7rem;
+        }
+    }
+    span{
+        padding-left: 10px;
+        text-align: left;
+        flex: 1;
+    }
+}

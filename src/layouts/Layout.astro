@@ -2,8 +2,6 @@
 import { SITE } from "src/config";
 import "../stylesheet/style.scss";
 import SetMeta from "@partials/SetMeta.astro";
-import Header from "@partials/Header.astro";
-import Footer from "@partials/Footer.astro";
 
 const { title, pageDesc, keyword, ogImage, pageType, classname, activeNav, current } = Astro.props;
 export interface Props {
@@ -26,19 +24,13 @@ export interface Props {
 		<meta name="generator" content={Astro.generator} />
 		<SetMeta title={ title } pageDesc={ pageDesc } pageType={ pageType } keyword={ keyword } ogImage={ ogImage }  />
 	</head>
-	<body class={ `${classname ? classname : ""}` }>
+	<body class="panel-wrapper">
 		<div id="container">
-			<Header activeNav={ activeNav } current={ current } />
-			<main id="main" class="">
-				<slot />
-			</main> <!-- /main -->
-			<Footer />
+			<slot />
 		</div> <!-- /cotainer -->
 	</body>
 </html>
 <script>
-	// import { Collapse, Dropdown } from 'bootstrap';
-	
 	loadFont(
 		'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap'
 	)
