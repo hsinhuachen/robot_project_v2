@@ -2,12 +2,20 @@ import React, { useState } from "react";
 import DefaultAvater from "@assets/images/person-circle.svg";
 import Account from "@assets/images/account.png";
 
-function Header({ onOpenAccount }) {
+function Header({ onOpenAccount, onOpenSetting }) {
+  const [systemDate] = useState("2025年08月08日 11時43分17秒");
+  const [robotoSignal] = useState("SIM 弱");
+  const [controlSignal] = useState("SIM 弱");
+  
   return (
     <header>
         <nav className="navbar">
             <div className="nav-left">
-                <button type="button" className="setting-btn">
+                <button 
+                  type="button" 
+                  className="setting-btn"
+                  onClick={() => onOpenSetting()}
+                >
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="25" viewBox="0 0 32 25" fill="none">
                         <circle cx="10.8333" cy="4.16667" r="4.16667" fill="white"/>
                         <circle cx="10.8333" cy="20.8333" r="4.16667" fill="white"/>
@@ -23,9 +31,9 @@ function Header({ onOpenAccount }) {
             </div>
             <div className="nav-info">
                 <ul>
-                    <li>機器人4G訊號：<span>SIM 弱</span></li>
-                    <li>操控台4G訊號：<span>SIM 弱</span></li>
-                    <li>系統衛星時間：<span>2025年08月08日 11時43分17秒</span></li>
+                    <li>機器人4G訊號：<span>{robotoSignal}</span></li>
+                    <li>操控台4G訊號：<span>{controlSignal}</span></li>
+                    <li>系統衛星時間：<span>{systemDate}</span></li>
                 </ul>
             </div>
             <div className="nav-right">

@@ -1,0 +1,109 @@
+.setting-panel{
+    color: #FFFFFF;
+    width: 95%;
+    height: 80vh;
+    background-color: $black;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.system-group{
+    margin-bottom: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.system-label{
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    line-height: 100%;
+    font-weight: 500;
+    padding-right: 10px;
+    &.size-lg{
+        width: 130px;
+    }
+    &.label-title{
+        margin-top: 7px;
+    }
+}
+
+.system-control{
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 100%;
+    padding: 0 5px;
+    height: 30px;
+    border: none;
+    background-color: rgba(#6D6D6D, .2);
+    flex: 1;
+    max-width: 200px;
+    &:focus{
+        color: $black;
+        background-color: #FFFFFF;
+        outline: none;
+    }
+}
+
+.system-radios{
+    margin-top: 30px;
+}
+
+.system-radio-group{
+    grid-template-columns: 140px 140px 140px;
+    gap: 18px;
+    display: grid;
+}
+
+.radio-group{
+    position: relative;
+    label{
+        background-color: #FF0000;
+    }
+    input{
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+}
+
+.checkbox-btn{
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 100%;
+    background: #2d2d2e;
+    cursor: pointer;
+    // box-shadow:
+    //     3px 5px 7px rgba(0,0,0, .25), 
+    //     inset -2px -2px 1px rgba(255,255,255, .2);
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transform: translateY(-5px);
+    transition: transform .3s;
+    transition-timing-function: cubic-bezier(0.68, -0.9, 0.27, 2);
+    border: none;
+}
+
+input:checked ~ .checkbox-btn, .checkbox-btn.active{
+    background-color: $primary;
+    transform: translateY(0px);
+}
+
+.setting-item{
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.system-value{
+    .row{
+        --bs-gutter-x: 40px;
+    }
+    .system-control{
+        max-width: 60px;
+    }
+}

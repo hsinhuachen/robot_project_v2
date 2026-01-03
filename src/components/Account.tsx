@@ -52,115 +52,115 @@ function Account({ showModal, onClose }) {
 
   return showModal && (
     <div 
-      className="account-modal" 
+      className="panel-modal" 
       style={{ backgroundImage: `url(${Bg.src})` }}
     >
-        <div className="account-panel">
-            <div className="modal-body">
-                <SectionHeader title={"管理使用者中心"} />
-                <div className="modal-content">
-                    <table className="table w-100">
-                        <thead>
-                            <tr>
-                                <th scope="col">使用者名稱</th>
-                                <th scope="col">密碼設置</th>
-                                <th scope="col">安全問題</th>
-                                <th scope="col">權限調整</th>
-                                <th scope="col" className="text-center">帳號狀態</th>
-                                <th scope="col" width="10%">新增/刪除</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((user) => (
-                                <tr key={user.id}>
-                                    <td>{user.name}</td>
-                                    <td>
-                                        <button 
-                                          type="button"
-                                          className="account-btn text-start"
-                                          onClick={() => resetPw()}
-                                        >
-                                            ******
-                                        </button>
-                                    </td>
-                                    <td>******</td>
-                                    <td>
-                                        <select
-                                            className="account-select"
-                                            value={user.role}
-                                            onChange={(e) => handleRoleChange(user.id, e.target.value)}
-                                        >
-                                            <option value={1}>管理者</option>
-                                            <option value={0}>一般使用者</option>
-                                        </select>
-                                    </td>
-                                    <td className="text-center">
-                                        <select
-                                            className="account-select"
-                                            value={user.status}
-                                            onChange={(e) => handleStatusChange(user.id, e.target.value)}
-                                        >
-                                            <option value={1}>啟用</option>
-                                            <option value={0}>停用</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <button 
-                                          type="button"
-                                          className="account-btn"
-                                          onClick={() => handleDelete(user.name, user.id)}
-                                        >
-                                            -
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+      <div className="account-panel">
+        <div className="modal-body">
+            <SectionHeader title={"管理使用者中心"} />
+            <div className="modal-content">
+                <table className="table w-100">
+                    <thead>
+                        <tr>
+                            <th scope="col">使用者名稱</th>
+                            <th scope="col">密碼設置</th>
+                            <th scope="col">安全問題</th>
+                            <th scope="col">權限調整</th>
+                            <th scope="col" className="text-center">帳號狀態</th>
+                            <th scope="col" width="10%">新增/刪除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user) => (
+                            <tr key={user.id}>
+                                <td>{user.name}</td>
                                 <td>
                                     <button 
-                                      type="button" 
-                                      onClick={handleAdd}
-                                      className="account-btn"
+                                      type="button"
+                                      className="account-btn text-start"
+                                      onClick={() => resetPw()}
                                     >
-                                        +
+                                        ******
+                                    </button>
+                                </td>
+                                <td>******</td>
+                                <td>
+                                    <select
+                                        className="account-select"
+                                        value={user.role}
+                                        onChange={(e) => handleRoleChange(user.id, e.target.value)}
+                                    >
+                                        <option value={1}>管理者</option>
+                                        <option value={0}>一般使用者</option>
+                                    </select>
+                                </td>
+                                <td className="text-center">
+                                    <select
+                                        className="account-select"
+                                        value={user.status}
+                                        onChange={(e) => handleStatusChange(user.id, e.target.value)}
+                                    >
+                                        <option value={1}>啟用</option>
+                                        <option value={0}>停用</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <button 
+                                      type="button"
+                                      className="account-btn"
+                                      onClick={() => handleDelete(user.name, user.id)}
+                                    >
+                                        <i className="bi bi-dash"></i>
                                     </button>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div className="modal-footer">
-                    <div className="btns">
-                        <button 
-                          type="button" 
-                          className="btn btn-primary"
-                          onClick={() => handleSave()}
-                        >
-                            儲存
-                        </button>
-                        <button 
-                          type="button" 
-                          className="btn btn-primary"
-                          onClick={onClose}
-                        >
-                            關閉
-                        </button>
-                    </div>
+                        ))}
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button 
+                                  type="button" 
+                                  onClick={handleAdd}
+                                  className="account-btn"
+                                >
+                                    <i className="bi bi-plus"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div className="modal-footer">
+                <div className="btns">
+                    <button 
+                      type="button" 
+                      className="btn btn-primary"
+                      onClick={() => handleSave()}
+                    >
+                        儲存
+                    </button>
+                    <button 
+                      type="button" 
+                      className="btn btn-primary"
+                      onClick={onClose}
+                    >
+                        關閉
+                    </button>
                 </div>
             </div>
         </div>
-        <button
-          type="button"
-          className="close-btn"
-          onClick={onClose}
-        >
-            &times;
-        </button>
+      </div>
+      <button
+        type="button"
+        className="close-btn"
+        onClick={onClose}
+      >
+          &times;
+      </button>
     </div>
   );
 }
