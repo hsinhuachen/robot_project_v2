@@ -60,7 +60,7 @@ function User({ onOpenAccount }) {
         <div className="dropdown">
             <button
               type="button" 
-              className="user-btn"
+              className="user-btn" 
               onClick={() => setOpen(!open)}
             >
                 管理者/使用者 名稱

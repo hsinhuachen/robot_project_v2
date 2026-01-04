@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import SectionHeader from "@components/SectionHeader.tsx";
+import IpComponent from "@components/Ip.tsx";
+import IoComponent from "@components/Io.tsx";
 import Bg from "@assets/images/bg.jpg"
+import Export from "@assets/images/export.png"
+import Import from "@assets/images/import.png"
 
 function Setting({ showModal, onClose }) {
+  const [showDetail, setShowDetail] = useState(0)
   const [systemSetting, setSystemSetting] = useState(
         { 
             lightNVRID: "", 
@@ -94,8 +99,10 @@ function Setting({ showModal, onClose }) {
                     name: "O₂(%)",
                     meta_key: "o2",
                     value: {
-                        warning: 0,
-                        alarm: 0
+                        warning_min: 0,
+                        warning_max: 0,
+                        alarm_min: 0,
+                        alarm_max: 0,
                     }
                 },
                 {
@@ -125,9 +132,12 @@ function Setting({ showModal, onClose }) {
     });
   };
 
+  const modalClose = () => {
+    setShowDetail(0)
+  };
+
   // 儲存
   const handleSave = () => {
-    onClose();
   };
 
   if (!showModal) return null;
@@ -138,7 +148,12 @@ function Setting({ showModal, onClose }) {
       style={{ backgroundImage: `url(${Bg.src})` }}
     >
       <div className="setting-panel">
-        <div className="modal-body">
+        {showDetail === 1 ? (
+          <IpComponent onClose={modalClose} />
+        ) : showDetail === 2 ? (
+          <IoComponent onClose={modalClose} />
+        ) : (
+          <div className="modal-body">
             <SectionHeader title={"系統設定"} />
             <div className="modal-content">
                 <div className="row">
@@ -293,7 +308,7 @@ function Setting({ showModal, onClose }) {
                         </div>
                         <div className="system-radios">
                             <div className="system-radio-group">
-                            <label 
+                                <label 
                                     htmlFor="enable-charge" 
                                     className="radio-group"
                                 >
@@ -313,6 +328,17 @@ function Setting({ showModal, onClose }) {
                                 <button type="button" className="checkbox-btn active">
                                     系統自測
                                 </button>
+                                <div className="system-action">
+                                    <p className="h3">參數設置</p>
+                                    <div className="d-flex">
+                                        <button type="button" className="system-action-btn">
+                                            <img src={Import.src} alt="" />
+                                        </button>
+                                        <button type="button" className="system-action-btn">
+                                            <img src={Export.src} alt="" />
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -324,30 +350,107 @@ function Setting({ showModal, onClose }) {
                                     {setting.name}
                                 </div>
                                 <div className="system-value">
-                                    <div className="row">
-                                        <div className="col-md-6">
-                                            <div className="system-group">
-                                                <label htmlFor={`${setting.meta_key}-warning`} className="system-label">
-                                                    預警閥值
+                                    {Object.keys(setting.value).length > 2 ? (
+                                        <>
+                                            <div className="row">
+                                                <div className="col-md-6">
+                                                    <div className="system-group">
+                                                        <label htmlFor={`${setting.meta_key}-warning-min`} className="system-label size-md">
+                                                            &lt; 預警閥值
+                                                        </label>
+                                                        <input
+                                                          id={`${setting.meta_key}-warning-min`}
+                                                          className="system-control"
+                                                          type="text"
+                                                          value={setting.value.warning_min}
+                                                          onChange={(e) =>
+                                                            handleValueChange(index, "warning_min", Number(e.target.value))
+                                                          }
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <label htmlFor={`${setting.meta_key}-alarm-min`} className="system-label size-md">
+                                                        &lt; 警報閥值
+                                                    </label>
+                                                    <input
+                                                        id={`${setting.meta_key}-alarm-max`}
+                                                        className="system-control"
+                                                        type="text"
+                                                        value={setting.value.alarm_max}
+                                                        onChange={(e) =>
+                                                            handleValueChange(index, "alarm_max", Number(e.target.value))
+                                                        }
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-md-6">
+                                                    <div className="system-group">
+                                                        <label htmlFor={`${setting.meta_key}-warning-max`} className="system-label size-md">
+                                                           &gt; 預警閥值
+                                                        </label>
+                                                        <input
+                                                          id={`${setting.meta_key}-warning-max`}
+                                                          className="system-control"
+                                                          type="text"
+                                                          value={setting.value.warning_max}
+                                                          onChange={(e) =>
+                                                            handleValueChange(index, "warning_max", Number(e.target.value))
+                                                          }
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <label htmlFor={`${setting.meta_key}-alarm-max`} className="system-label size-md">
+                                                       &gt; 警報閥值
+                                                    </label>
+                                                    <input
+                                                        id={`${setting.meta_key}-alarm-max`}
+                                                        className="system-control"
+                                                        type="text"
+                                                        value={setting.value.alarm_max}
+                                                        onChange={(e) =>
+                                                          handleValueChange(index, "alarm_max", Number(e.target.value))
+                                                        }
+                                                    />
+                                                </div>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="system-group">
+                                                    <label htmlFor={`${setting.meta_key}-warning`} className="system-label size-md">
+                                                        預警閥值
+                                                    </label>
+                                                    <input
+                                                      id={`${setting.meta_key}-warning`}
+                                                      className="system-control"
+                                                      type="text"
+                                                      value={setting.value.warning}
+                                                      onChange={(e) =>
+                                                        handleValueChange(index, "warning", Number(e.target.value))
+                                                      }
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <label htmlFor={`${setting.meta_key}-alarm`} className="system-label size-md">
+                                                    警報閥值
                                                 </label>
                                                 <input
-                                                    id={`${setting.meta_key}-warning`}
-                                                    className="system-control"
-                                                    type="text"
+                                                  id={`${setting.meta_key}-alarm`}
+                                                  className="system-control"
+                                                  type="text"
+                                                  value={setting.value.alarm}
+                                                  onChange={(e) =>
+                                                    handleValueChange(index, "alarm", Number(e.target.value))
+                                                  }
                                                 />
                                             </div>
                                         </div>
-                                        <div className="col-md-6">
-                                            <label htmlFor={`${setting.meta_key}-alarm`} className="system-label">
-                                                警報閥值
-                                            </label>
-                                            <input
-                                                id={`${setting.meta_key}-alarm`}
-                                                className="system-control"
-                                                type="text"
-                                            />
-                                        </div>
-                                    </div>
+                                    )}
                                 </div>
                             </div>
                           ))}
@@ -360,12 +463,14 @@ function Setting({ showModal, onClose }) {
                     <button 
                       type="button" 
                       className="btn btn-primary"
+                      onClick={() => setShowDetail(1)}
                     >
                         設備IP設置
                     </button>
                     <button 
                       type="button" 
                       className="btn btn-primary"
+                      onClick={() => setShowDetail(2)}
                     >
                         I/O設置
                     </button>
@@ -379,18 +484,25 @@ function Setting({ showModal, onClose }) {
                     <button 
                       type="button" 
                       className="btn btn-primary"
-                      onClick={onClose}
+                      onClick={() => {
+                        setShowDetail(0)
+                        onClose()
+                      }}
                     >
                         關閉
                     </button>
                 </div>
             </div>
-        </div>
+          </div>
+        )}
       </div>
       <button
         type="button"
         className="close-btn"
-        onClick={onClose}
+        onClick={() => {
+            setShowDetail(0)
+            onClose()
+        }}
       >
           &times;
       </button>

@@ -144,8 +144,72 @@ p {
 
 .table{
     color: #FFFFFF;
+    th{
+        white-space: nowrap;
+    }
     tr:nth-child(odd) td{
         background-color: rgba(#D9D9D9, .02);
+    }
+}
+
+.switch-item {
+    position: relative;
+    margin-top: 4px;
+    input[type=checkbox]{
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    label {
+        text-indent: -9999px;
+        cursor: pointer;
+        width: 48px;
+        height: 20px;
+        background: $black;
+        display: block;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    label:before{
+        content: "關";
+        position: absolute;
+        left: 5px;
+        top: 2px;
+        color: #FFFFFF;
+        font-size: 1.5rem;
+        text-indent: 0px;
+        font-weight: 500;
+        line-height: 100%;
+        display: block;
+    }
+
+    label:after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: calc(100% - 5px);
+        transform: translateX(-100%);
+        width: 16px;
+        height: 16px;
+        background: #fff;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+
+    input:checked + label {
+        background: $primary;
+    }
+
+    input:checked + label:after {
+        left: 20px;
+    }
+
+    input:checked + label:before {
+        content: "開";
+        left: 25px;
     }
 }
 

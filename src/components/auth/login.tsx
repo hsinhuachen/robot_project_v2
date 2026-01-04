@@ -32,7 +32,8 @@ function LoginForm() {
     // 有錯誤就不送出
     if (Object.keys(validationErrors).length > 0) return;
 
-    console.log({ username, password });
+    // console.log({ username, password });
+    window.location.href = "/panel";
   };
 
   return (
