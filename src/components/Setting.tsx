@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SectionHeader from "@components/SectionHeader.tsx";
 import IpComponent from "@components/Ip.tsx";
 import IoComponent from "@components/Io.tsx";
+import SystemTest from "@components/SystemTest.tsx";
 import Bg from "@assets/images/bg.jpg"
 import Export from "@assets/images/export.png"
 import Import from "@assets/images/import.png"
@@ -152,6 +153,8 @@ function Setting({ showModal, onClose }) {
           <IpComponent onClose={modalClose} />
         ) : showDetail === 2 ? (
           <IoComponent onClose={modalClose} />
+        ) : showDetail === 3 ? (
+          <SystemTest onClose={modalClose} />
         ) : (
           <div className="modal-body">
             <SectionHeader title={"系統設定"} />
@@ -325,7 +328,11 @@ function Setting({ showModal, onClose }) {
                                     />
                                     <span className="checkbox-btn">充電完成</span>
                                 </label>
-                                <button type="button" className="checkbox-btn active">
+                                <button 
+                                  type="button" 
+                                  className="checkbox-btn active"
+                                  onClick={() => setShowDetail(3)}
+                                >
                                     系統自測
                                 </button>
                                 <div className="system-action">

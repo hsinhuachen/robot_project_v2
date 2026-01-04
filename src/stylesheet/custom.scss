@@ -144,6 +144,7 @@ p {
 
 .table{
     color: #FFFFFF;
+    margin-bottom: 100px;
     th{
         white-space: nowrap;
     }
@@ -226,4 +227,8 @@ p {
     justify-content: center;
     align-items: center;
     display: flex;
+}
+
+.badge{
+    --bs-badge-font-size: 1.7rem;
 }

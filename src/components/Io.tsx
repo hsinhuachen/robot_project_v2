@@ -260,6 +260,7 @@ function Io({onClose}) {
                          type="checkbox" 
                          id={`switch-${item.id}`} 
                          checked={item.open ? true : false}
+                         onChange={(e) => updateItem(item.id, "open", e.target.checked)}
                         />
                         <label htmlFor={`switch-${item.id}`}>Toggle</label>
                       </div>
